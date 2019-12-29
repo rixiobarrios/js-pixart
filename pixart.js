@@ -3,28 +3,30 @@
 // You can use document.querySelector(or another document method) to select the element, then add an event listener.
 
 let brush = document.querySelector('.brush');
-let setColor = document.querySelector('#form');
+let setColor = document.querySelector('#set-color');
 let colorField = document.querySelector('#color-field');
 
 // HINT: You will notice that the page refreshes whenever you click the button.You need to prevent this from happening using a method you have not used before.Google "javascript event prevent default".You can also reference this portion of the Events & Callbacks lesson plan.
 
-setColor.addEventListener('click', function(event) {
+setColor.addEventListener('click', function(evt) {
     console.log('click');
-    event.preventDefault();
+    evt.preventDefault();
+    brush.style.background = colorField.value;
 });
 
 //Commit 2
 //The same thing should happen when I press the enter key from inside the input field
 
-setColor.addEventListener('keyup', function(event) {
+setColor.addEventListener('keyup', function(evt) {
     console.log('keyup');
-    event.preventDefault();
+    evt.preventDefault();
+    brush.style.background = colorField.value;
 });
 //Commit 3
 // Create 20 divs of the "square" class and append them to the body
 // Hint: use.appendChild()
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 8000; i++) {
     let newDiv = document.createElement('div');
     newDiv.classList.add('square');
     document.getElementsByTagName('body')[0].appendChild(newDiv);
@@ -38,8 +40,8 @@ let square = document.getElementsByClassName('square');
 let colors = ['green'];
 for (i = 0; i < square.length; i++) {
     let temp = square[i];
-    temp.addEventListener('click', function(evt) {
-        evt.target.style.background = 'green';
+    temp.addEventListener('mouseover', function(evt) {
+        evt.target.style.background = colorField.value;
     });
 }
 
